@@ -1,3 +1,4 @@
+local astro_utils = require "astronvim.utils"
 -- Mapping data with "desc" stored directly by vim.keymap.set().
 --
 -- Please use this mappings table to set keyboard mapping since this is the
@@ -38,11 +39,18 @@ return {
       desc = "Pick to close",
     },
     ["<leader>c"] = false, -- disable original mappings
-    -- tables with the `name` key will be registered with which-key if it's installed
-    -- this is useful for naming menus
+
+    -- Resize
+    ["<A-;>"] = { "<cmd>resize -2<CR>", desc = "Resize split up" },
+    ["<A-'>"] = { "<cmd>resize +2<CR>", desc = "Resize split down" },
+    ["<A-[>"] = { "<cmd>vertical resize -5<CR>", desc = "Resize split left" },
+    ["<A-]>"] = { "<cmd>vertical resize +5<CR>", desc = "Resize split right" },
 
     -- quick save
     ["<C-s>"] = { ":w!<cr>", desc = "Save File" }, -- change description but the same command
+
+    -- Telescope
+    ["<leader>fp"] = { "<cmd>Telescope projects<cr>", desc = "Projects" },
 
     -- NeoTree
     ["<leader>o"] = false,
@@ -61,7 +69,12 @@ return {
     ["<C-\\>"] = { "<cmd>ToggleTerm size=20 direction=horizontal<cr>", desc = "terminal: Toggle horizontal" },
     ["<A-\\>"] = { "<cmd>ToggleTerm size=40 direction=vertical<cr>", desc = "terminal: Toggle horizontal" },
     ["<C-A-\\>"] = { "<cmd>ToggleTerm direction=float<cr>", desc = "terminal: Toggle horizontal" },
+
+    -- Markdown and LaTeX
+    ["<leader>m"] = { desc = "󱁤 Compiler" },
   },
+
+  -- Terminal Mode --
   t = {
     ["<C-\\>"] = { "<cmd>ToggleTerm<cr>", desc = "terminal: Toggle horizontal" },
     ["<A-\\>"] = { "<cmd>ToggleTerm<cr>", desc = "terminal: Toggle horizontal" },

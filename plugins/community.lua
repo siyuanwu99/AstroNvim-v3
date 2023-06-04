@@ -19,6 +19,7 @@ return {
   { import = "astrocommunity.markdown-and-latex.vimtex" },
   { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.pack.cmake" },
+  { import = "astrocommunity.scrolling.cinnamon-nvim" },
   {
     -- further customize the options set by the community
     "catppuccin",
