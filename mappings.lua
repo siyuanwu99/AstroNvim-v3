@@ -51,7 +51,23 @@ return {
 
     -- Telescope
     ["<leader>fp"] = { "<cmd>Telescope projects<cr>", desc = "Projects" },
+    ["<leader>fr"] = { "<cmd>Telescope ros ros<cr>", desc = "ROS" },
+    ["<leader>fg"] = { function() require("telescope.builtin").registers() end, desc = "Find registers" },
 
+    -- ROS
+
+    -- follow links in launch files
+    ["<leader>rl"] = { function() require("ros-nvim.ros").open_launch_include() end, desc = "Open launch include" },
+    -- show definition for messages/services in floating window
+    ["<leader>rm"] = {
+      function() require("ros-nvim.ros").show_message_definition() end,
+      desc = "Show message definition",
+    },
+    ["<leader>rs"] = {
+      function() require("ros-nvim.ros").show_service_definition() end,
+      desc = "Show services definition",
+    },
+    --
     -- NeoTree
     ["<leader>o"] = false,
     ["<C-e>"] = {
@@ -85,5 +101,11 @@ return {
   i = {
     ["<C-\\>"] = { "<Esc><Cmd>ToggleTerm direction=horizontal<CR>", desc = "terminal: Toggle horizontal" },
     ["<A-\\>"] = { "<Esc><Cmd>ToggleTerm direction=vertical<CR>", desc = "terminal: Toggle horizontal" },
+  },
+
+  -- Visual Mode --
+  v = {
+    ["J"] = { ":m '>+1<CR>gv=gv", desc = "edit: Move this line down" },
+    ["K"] = { ":m '<-2<CR>gv=gv", desc = "edit: Move this line up" },
   },
 }
