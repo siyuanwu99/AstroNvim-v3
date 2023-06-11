@@ -55,8 +55,7 @@ return {
     ["<leader>fg"] = { function() require("telescope.builtin").registers() end, desc = "Find registers" },
 
     -- ROS
-
-    -- follow links in launch files
+    ["<leader>r"] = { desc = "󱨚 ROS" },
     ["<leader>rl"] = { function() require("ros-nvim.ros").open_launch_include() end, desc = "Open launch include" },
     -- show definition for messages/services in floating window
     ["<leader>rm"] = {
@@ -67,7 +66,7 @@ return {
       function() require("ros-nvim.ros").show_service_definition() end,
       desc = "Show services definition",
     },
-    --
+
     -- NeoTree
     ["<leader>o"] = false,
     ["<C-e>"] = {
@@ -88,6 +87,29 @@ return {
 
     -- Markdown and LaTeX
     ["<leader>m"] = { desc = "󱁤 Compiler" },
+
+    -- LSP
+    ["<leader>lS"] = false,
+    ["<leader>lo"] = { function() require("aerial").toggle() end, desc = "language: Outline" },
+    -- doxygen comments
+    ["<leader>lgg"] = { function() require("neogen").generate() end, desc = "language: Generate doxygen comments" },
+    ["<leader>lgt"] = {
+      function() require("neogen").generate { type = "type" } end,
+      desc = "language: Generate doxygen comments",
+    },
+    ["<leader>lgc"] = {
+      function() require("neogen").generate { type = "class" } end,
+      desc = "language: Generate doxygen comments",
+    },
+    ["<leader>lga"] = {
+      function() require("neogen").generate { type = "file" } end,
+      desc = "language: Generate doxygen comments",
+    },
+    ["<leader>lgf"] = {
+      function() require("neogen").generate { type = "func" } end,
+      desc = "language: Generate doxygen comments",
+    },
+    --
   },
 
   -- Terminal Mode --

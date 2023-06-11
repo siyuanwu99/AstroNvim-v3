@@ -75,4 +75,11 @@ return {
       datapath = vim.fn.stdpath "data",
     },
   },
+  {
+    "neogen",
+    opts = {
+      enabled = true,
+      input_after_comment = true,
+    },
+  },
 }
