@@ -1,0 +1,62 @@
+{
+    "column": {
+        "prefix": ":::",
+        "body": [
+            "::: {.columns}",
+            "",
+            ":::: {.column width=\"40%\"}",
+            "Left column",
+            "::::",
+            "",
+            ":::: {.column width=\"60%\"}",
+            "Right column",
+            "::::",
+            "",
+            ":::"
+        ],
+        "description": "quarto columns"
+    },
+    "panel": {
+        "prefix": "panel",
+        "body": [
+            "::: {.panel-tabset}",
+            "${1:body}",
+            ":::"
+        ],
+        "description": "quarto panel"
+    },
+    "fence": {
+        "prefix": "fence",
+        "body": [
+            ":::{.${1:type}}",
+            "${2:body}",
+            ":::"
+        ],
+        "description": "quarto fence"
+    },
+    "aside": {
+        "prefix": "aside",
+        "body": [
+            "::: aside",
+            "${1:body}",
+            ":::"
+        ],
+        "description": "quarto aside"
+    },
+    "fragment": {
+        "prefix": "frag",
+        "body": [
+            "::: {.fragment .${1:type}}",
+            "${2:body}",
+            ":::"
+        ],
+        "description": "quarto fragment"
+    },
+    "dateYMD": {
+        "prefix": "dateYDM",
+        "body": [
+            "${CURRENT_YEAR}-${CURRENT_MONTH}-${CURRENT_DATE}"
+        ],
+        "description": "Put the date in (YYYY-MM-DD) format"
+    }
+}

@@ -1,0 +1,82 @@
+{
+  "name": "user_snippets",
+  "engines": {
+    "vscode": "^1.11.0"
+  },
+  "contributes": {
+    "languages": [
+      {
+        "id": "xml",
+        "extensions": [
+          "launch",
+          "srdf",
+          "urdf",
+          "xacro"
+        ]
+      },
+      {
+        "id": "yaml",
+        "extensions": [
+          "rviz"
+        ]
+      }
+    ],
+    "snippets": [
+      {
+        "language": [
+          "plaintext",
+          "markdown",
+          "tex",
+          "html",
+          "global",
+          "all"
+        ],
+        "path": "./global.json"
+      },
+      {
+        "language": "c",
+        "path": "./c.json"
+      },
+      {
+        "language": "cpp",
+        "path": "./cpp.json"
+      },
+      {
+        "language": "python",
+        "path": "./python.json"
+      },
+      {
+        "language": "latex",
+        "path": "./latex.json"
+      },
+      {
+        "language": "markdown",
+        "path": "./markdown.json"
+      },
+      {
+        "language": "global",
+        "path": "./global.json"
+      },
+      {
+        "language": "xml",
+        "path": "./ros_urdf_snippets.json"
+      },
+      {
+        "language": "xml",
+        "path": "./ros_launch_file.json"
+      },
+      {
+        "language": "python",
+        "path": "./ros_py_snippets.json"
+      },
+      {
+        "language": "python",
+        "path": "./ros_py_moveit.json"
+      },
+      {
+        "language": "cpp",
+        "path": "./ros_cpp_snippets.json"
+      }
+    ]
+  }
+}

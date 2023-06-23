@@ -3,9 +3,12 @@ return {
     "L3MON4D3/LuaSnip",
     build = vim.fn.has "win32" ~= 0
         and "echo 'NOTE: jsregexp is optional, so not a big deal if it fails to build\n'; make install_jsregexp"
-      or nil,
+        or nil,
     dependencies = { "rafamadriz/friendly-snippets" },
-    config = require "plugins.configs.luasnip",
+    config = function(plugin, opts)
+      require "plugins.configs.luasnip" (plugin, opts)                                       -- include the default astronvim config that calls the setup call
+      require("luasnip.loaders.from_vscode").lazy_load { paths = { "./lua/user/snippets" } } -- load snippets paths
+    end,
   },
   {
     "hrsh7th/nvim-cmp",
@@ -35,10 +38,10 @@ return {
       return {
         enabled = function()
           local dap_prompt = utils.is_available "cmp-dap" -- add interoperability with cmp-dap
-            and vim.tbl_contains(
-              { "dap-repl", "dapui_watches", "dapui_hover" },
-              vim.api.nvim_get_option_value("filetype", { buf = 0 })
-            )
+              and vim.tbl_contains(
+                { "dap-repl", "dapui_watches", "dapui_hover" },
+                vim.api.nvim_get_option_value("filetype", { buf = 0 })
+              )
           if vim.api.nvim_get_option_value("buftype", { buf = 0 }) == "prompt" and not dap_prompt then return false end
           return vim.g.cmp_enabled
         end,
@@ -70,8 +73,8 @@ return {
           ["<Down>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
           ["<C-p>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
           ["<C-n>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
-          ["<C-k>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Insert },
-          ["<C-j>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Insert },
+          ["<C-k>"] = cmp.mapping.select_prev_item { behavior = cmp.SelectBehavior.Select },
+          ["<C-j>"] = cmp.mapping.select_next_item { behavior = cmp.SelectBehavior.Select },
           ["<C-u>"] = cmp.mapping(cmp.mapping.scroll_docs(-4), { "i", "c" }),
           ["<C-d>"] = cmp.mapping(cmp.mapping.scroll_docs(4), { "i", "c" }),
           ["<C-Space>"] = cmp.mapping(cmp.mapping.complete(), { "i", "c" }),
@@ -101,9 +104,9 @@ return {
         },
         sources = cmp.config.sources {
           { name = "nvim_lsp", priority = 1000 },
-          { name = "luasnip", priority = 750 },
-          { name = "buffer", priority = 500 },
-          { name = "path", priority = 250 },
+          { name = "luasnip",  priority = 750 },
+          { name = "buffer",   priority = 500 },
+          { name = "path",     priority = 250 },
         },
       }
     end,
