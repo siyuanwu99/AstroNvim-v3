@@ -4,8 +4,10 @@ return {
     -- set to true or false etc.
     relativenumber = true, -- sets vim.opt.relativenumber
     number = true, -- sets vim.opt.number
-    spell = false, -- sets vim.opt.spell
+    spell = true, -- sets vim.opt.spell
     signcolumn = "auto", -- sets vim.opt.signcolumn to auto
+    cursorline = true, -- sets vim.opt.cursorline
+    cursorcolumn = true, -- sets vim.opt.cursorcolumn
     wrap = false, -- sets vim.opt.wrap
   },
   g = {
