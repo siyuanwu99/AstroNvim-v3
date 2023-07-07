@@ -35,12 +35,42 @@ return {
       daily_notes = {
         folder = "01-Diary/日志存档",
       },
+      -- Optional, for templates (see below).
+      templates = {
+        subdir = "09-Templates",
+        date_format = "%Y-%m-%d",
+        time_format = "%H:%M:%S",
+      },                 -- Optional, completion.
+      completion = {
+        nvim_cmp = true, -- if using nvim-cmp, otherwise set to false
+      },
+      -- Optional, set to true if you don't want Obsidian to manage frontmatter.
+      disable_frontmatter = false,
+
+      -- Optional, alternatively you can customize the frontmatter data.
+      note_frontmatter_func = function(note)
+        -- This is equivalent to the default frontmatter function.
+        local out = { title = note.title, id = note.id, date = note.date, tags = note.tags }
+        -- `note.metadata` contains any manually added fields in the frontmatter.
+        -- So here we just make sure those fields are kept in the frontmatter.
+
+        -- set out.date to current date and time:
+        if note.date == nil then out.date = os.date "%Y-%m-%d %H:%M:%S" end
+
+        if note.metadata ~= nil and require("obsidian").util.table_length(note.metadata) > 0 then
+          for k, v in pairs(note.metadata) do
+            out[k] = v
+          end
+        end
+        return out
+      end,
       follow_url_func = function(url)
         -- Open the URL in the default web browser.
-        vim.fn.jobstart { "open", url } -- Mac OS
-        -- vim.fn.jobstart({"xdg-open", url})  -- linux
+        -- vim.fn.jobstart { "open", url } -- Mac OS
+        vim.fn.jobstart { "xdg-open", url } -- linux
       end,
       open_app_foreground = true,
+      finder = "telescope.nvim",
     },
     config = function(_, opts)
       require("obsidian").setup(opts)

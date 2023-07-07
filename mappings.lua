@@ -21,11 +21,11 @@ return {
       function() require("astronvim.utils.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
       desc = "Previous buffer",
     },
-    ["<A->>"] = {
+    ["<A-S-k>"] = {
       function() require("astronvim.utils.buffer").move(vim.v.count > 0 and vim.v.count or 1) end,
       desc = "Move buffer tab right",
     },
-    ["<A-<>"] = {
+    ["<A-S-j>"] = {
       function() require("astronvim.utils.buffer").move(-(vim.v.count > 0 and vim.v.count or 1)) end,
       desc = "Move buffer tab left",
     },
@@ -81,36 +81,51 @@ return {
     },
 
     -- Terminal
-    ["<C-\\>"] = { "<cmd>ToggleTerm size=20 direction=horizontal<cr>", desc = "terminal: Toggle horizontal" },
-    ["<A-\\>"] = { "<cmd>ToggleTerm size=40 direction=vertical<cr>", desc = "terminal: Toggle horizontal" },
-    ["<C-A-\\>"] = { "<cmd>ToggleTerm direction=float<cr>", desc = "terminal: Toggle horizontal" },
+    ["<C-\\>"] = { "<cmd>ToggleTerm size=20 direction=horizontal<cr>", desc = "Terminal: Toggle horizontal" },
+    ["<A-\\>"] = { "<cmd>ToggleTerm size=40 direction=vertical<cr>", desc = "Terminal: Toggle horizontal" },
+    ["<C-A-\\>"] = { "<cmd>ToggleTerm direction=float<cr>", desc = "Terminal: Toggle horizontal" },
 
     -- Markdown and LaTeX
     ["<leader>m"] = { desc = "󱁤 Compiler" },
 
     -- LSP
     ["<leader>lS"] = false,
-    ["<leader>lo"] = { function() require("aerial").toggle() end, desc = "language: Outline" },
+    ["<leader>lo"] = { function() require("aerial").toggle() end, desc = "Language: Outline" },
 
-    -- Annotations
+    -- Obsidian
+    ["<leader>o"] = { desc = "󰈙 Obsidian" },
+    ["<leader>oq"] = { "<cmd>ObsidianQuickSwitch<cr>", desc = "Obsidian: Quick search" },
+    ["<leader>of"] = { "<cmd>ObsidianSearch<cr>", desc = "Obsidian: Search" },
+    ["<leader>ob"] = { "<cmd>ObsidianBacklinks<cr>", desc = "Obsidian: Back links" },
+    ["<leader>ot"] = { "<cmd>ObsidianToday<cr>", desc = "Obsidian: Today" },
+    ["<leader>oo"] = { "<cmd>ObsidianFollowLink<cr>", desc = "Obsidian: Follow link" },
+    ["<leader>op"] = { "<cmd>ObsidianTemplate<cr>", desc = "Obsidian: Paste Template" },
+
+    -- VimTex
+    ["<leader>v"] = { desc = "󰈙 VimTex" },
+    ["<leader>vo"] = { "<cmd>VimtexTocToggle<cr>", desc = "VimTex: Toggle toc" },
+    ["<leader>vm"] = { "<cmd>VimtexCompile<cr>", desc = "VimTex: Compile" },
+    ["<leader>vc"] = { "<cmd>VimtexClean<cr>", desc = "VimTex: Clean" },
+    ["<leader>vv"] = { "<cmd>VimtexView<cr>", desc = "VimTex: View" },
+    ["<leader>vt"] = { "<cmd>VimtexTocToggle<cr>", desc = "VimTex: TOC" },
   },
 
   -- Terminal Mode --
   t = {
-    ["<C-\\>"] = { "<cmd>ToggleTerm<cr>", desc = "terminal: Toggle horizontal" },
-    ["<A-\\>"] = { "<cmd>ToggleTerm<cr>", desc = "terminal: Toggle horizontal" },
+    ["<C-\\>"] = { "<cmd>ToggleTerm<cr>", desc = "Terminal: Toggle horizontal" },
+    ["<A-\\>"] = { "<cmd>ToggleTerm<cr>", desc = "Terminal: Toggle horizontal" },
     -- setting a mapping to false will disable it
     -- ["<esc>"] = false,
   },
   -- Insert Mode --
   i = {
-    ["<C-\\>"] = { "<Esc><Cmd>ToggleTerm direction=horizontal<CR>", desc = "terminal: Toggle horizontal" },
-    ["<A-\\>"] = { "<Esc><Cmd>ToggleTerm direction=vertical<CR>", desc = "terminal: Toggle horizontal" },
+    ["<C-\\>"] = { "<Esc><Cmd>ToggleTerm direction=horizontal<CR>", desc = "Terminal: Toggle horizontal" },
+    ["<A-\\>"] = { "<Esc><Cmd>ToggleTerm direction=vertical<CR>", desc = "Terminal: Toggle horizontal" },
   },
 
   -- Visual Mode --
   v = {
-    ["J"] = { ":m '>+1<CR>gv=gv", desc = "edit: Move this line down" },
-    ["K"] = { ":m '<-2<CR>gv=gv", desc = "edit: Move this line up" },
+    ["J"] = { ":m '>+1<CR>gv=gv", desc = "Edit: Move this line down" },
+    ["K"] = { ":m '<-2<CR>gv=gv", desc = "Edit: Move this line up" },
   },
 }
