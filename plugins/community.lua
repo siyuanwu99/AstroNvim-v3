@@ -4,21 +4,24 @@ return {
   -- example of imporing a plugin, comment out to use it or add your own
   -- available plugins can be found at https://github.com/AstroNvim/astrocommunity
 
-  { import = "astrocommunity.colorscheme.catppuccin" },
+  { import = "astrocommunity.colorscheme.catppuccin", lazy = false },
+  { import = "astrocommunity.colorscheme.vscode-nvim", enable = true },
+  -- { import = "astrocommunity.colorscheme.everforest", enable = true },
   -- { import = "astrocommunity.colorscheme.sonokai" },
-  { import = "astrocommunity.colorscheme.github-nvim-theme",           enabled = true },
-  -- { import = "astrocommunity.colorscheme.monokai-pro-nvim",            enabled = false },
+  { import = "astrocommunity.colorscheme.gruvbox-nvim", enabled = false },
   { import = "astrocommunity.completion.copilot-lua-cmp" },
   { import = "astrocommunity.completion.copilot-lua" },
   { import = "astrocommunity.bars-and-lines.smartcolumn-nvim" },
   { import = "astrocommunity.project.project-nvim" },
-  { import = "astrocommunity.motion.leap-nvim" },
+  { import = "astrocommunity.motion.flash-nvim" },
   { import = "astrocommunity.editing-support.neogen" },
   { import = "astrocommunity.note-taking.obsidian-nvim" },
   { import = "astrocommunity.markdown-and-latex.markdown-preview-nvim" },
   { import = "astrocommunity.markdown-and-latex.vimtex" },
   { import = "astrocommunity.pack.python" },
   { import = "astrocommunity.pack.cmake" },
+  { import = "astrocommunity.pack.cpp" },
+  { import = "astrocommunity.pack.yaml" },
   { import = "astrocommunity.scrolling.cinnamon-nvim" },
   {
     -- further customize the options set by the community
@@ -62,7 +65,7 @@ return {
     },
   },
   {
-    "project.nvim",
+    "project_nvim",
     opts = {
       manual_mode = false,
       detection_methods = { "lsp", "pattern" },
