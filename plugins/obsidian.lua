@@ -3,8 +3,21 @@ return {
   {
     "epwalsh/obsidian.nvim",
     lazy = false,
-    -- event = { "BufReadPre " .. vault_dir .. "/**.md" },
-    -- event = "",
+    event = { "BufReadPre /home/siyuan/Notes/**.md" },
+    keys = {
+      {
+        "gf",
+        function()
+          if require("obsidian").util.cursor_on_markdown_link() then
+            return "<cmd>ObsidianFollowLink<CR>"
+          else
+            return "gf"
+          end
+        end,
+        noremap = false,
+        expr = true,
+      },
+    },
     dependencies = {
       -- Required.
       "nvim-lua/plenary.nvim",
@@ -40,11 +53,11 @@ return {
         subdir = "09-Templates",
         date_format = "%Y-%m-%d",
         time_format = "%H:%M:%S",
-      },                 -- Optional, completion.
+      }, -- Optional, completion.
       completion = {
         nvim_cmp = true, -- if using nvim-cmp, otherwise set to false
       },
-      -- Optional, set to true if you don't want Obsidian to manage frontmatter.
+
       disable_frontmatter = false,
 
       -- Optional, alternatively you can customize the frontmatter data.
@@ -64,26 +77,11 @@ return {
         end
         return out
       end,
-      follow_url_func = function(url)
-        -- Open the URL in the default web browser.
-        -- vim.fn.jobstart { "open", url } -- Mac OS
-        vim.fn.jobstart { "xdg-open", url } -- linux
-      end,
+      -- Optional, by default when you use `:ObsidianFollowLink` on a link to an external
+      -- URL it will be ignored but you can customize this behavior here.
+      follow_url_func = vim.ui.open or require("astronvim.utils").system_open,
       open_app_foreground = true,
       finder = "telescope.nvim",
     },
-    config = function(_, opts)
-      require("obsidian").setup(opts)
-
-      -- Optional, override the 'gf' keymap to utilize Obsidian's search functionality.
-      -- see also: 'follow_url_func' config option above.
-      vim.keymap.set("n", "gf", function()
-        if require("obsidian").util.cursor_on_markdown_link() then
-          return "<cmd>ObsidianFollowLink<CR>"
-        else
-          return "gf"
-        end
-      end, { noremap = false, expr = true })
-    end,
   },
 }

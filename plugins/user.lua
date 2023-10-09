@@ -16,4 +16,17 @@ return {
     config = function() require("ros-nvim").setup { only_workspace = true } end,
     dependencies = { "nvim-lua/plenary.nvim" },
   },
+  -- {
+  --   "edluffy/hologram.nvim",
+  --   lazy = false,
+  --   ft = { "markdown" },
+  --   config = function()
+  --     require("hologram").setup {
+  --       auto_display = true,
+  --     }
+  --   end,
+  -- },
+
+  -- Chinese Input
+  -- { "kevinhwang91/nvim-ibus-sw", config = function() require("ibus-sw").setup {} end, lazy = false },
 }

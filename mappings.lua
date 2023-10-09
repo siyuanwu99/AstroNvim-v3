@@ -93,7 +93,7 @@ return {
     ["<leader>lo"] = { function() require("aerial").toggle() end, desc = "Language: Outline" },
 
     -- Obsidian
-    ["<leader>o"] = { desc = "󰈙 Obsidian" },
+    -- ["<leader>o"] = { desc = "󰈙 Obsidian" },
     ["<leader>oq"] = { "<cmd>ObsidianQuickSwitch<cr>", desc = "Obsidian: Quick search" },
     ["<leader>of"] = { "<cmd>ObsidianSearch<cr>", desc = "Obsidian: Search" },
     ["<leader>ob"] = { "<cmd>ObsidianBacklinks<cr>", desc = "Obsidian: Back links" },
