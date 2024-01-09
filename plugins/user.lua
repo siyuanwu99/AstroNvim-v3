@@ -16,6 +16,13 @@ return {
     config = function() require("ros-nvim").setup { only_workspace = true } end,
     dependencies = { "nvim-lua/plenary.nvim" },
   },
+
+  {
+    "jghauser/auto-pandoc.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    ft = "markdown",
+  },
+
   -- {
   --   "edluffy/hologram.nvim",
   --   lazy = false,
